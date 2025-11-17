@@ -26,4 +26,8 @@ public class LogAuditoria {
 
     @Column(columnDefinition = "TEXT")
     private String detalhes;
+
+    public static Object builder() {
+        return null;
+    }
 }

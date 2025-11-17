@@ -1,5 +1,6 @@
 package com.profesa.selos.domain.entities;
 import jakarta.persistence.*;
+import jdk.jshell.Snippet;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -30,6 +31,14 @@ public class Empresa {
     private StatusEmpresa status;
 
     private LocalDateTime dataRegistro;
+
+    public static Snippet builder() {
+        return null;
+    }
+
+    public UUID getId() {
+        return null;
+    }
 
     public enum TipoEmpresa {
         FABRICANTE,
