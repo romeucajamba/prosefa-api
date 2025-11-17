@@ -1,4 +1,4 @@
-CREATE TABLE selo_seq (
+CREATE TABLE IF NOT EXISTS selo_seq (
     id serial PRIMARY KEY,
     value bigint
 )
