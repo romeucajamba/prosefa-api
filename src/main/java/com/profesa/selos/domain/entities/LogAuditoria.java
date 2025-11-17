@@ -1,13 +1,7 @@
 package com.profesa.selos.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,7 +10,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Data
+@Builder
 @Setter
+@Table(name = "log_auditoria")
 public class LogAuditoria {
     @Id
     @GeneratedValue
@@ -29,4 +26,8 @@ public class LogAuditoria {
 
     @Column(columnDefinition = "TEXT")
     private String detalhes;
+
+    public static Object builder() {
+        return null;
+    }
 }
