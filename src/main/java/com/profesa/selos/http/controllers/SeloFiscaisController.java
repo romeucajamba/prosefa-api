@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.profesa.selos.dto.SelosDto;
 
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ public class SeloFiscaisController {
     private SelosFiscaisService service;
 
     @PostMapping("/solicitar")
-    public ResponseEntity<SelosFiscais> solicitar(@RequestBody SeloRequestDto data, @RequestHeader("X-User") String user){
+    public ResponseEntity<SelosFiscais> solicitar(@RequestBody SelosDto data, @RequestHeader("X-User") String user){
         SelosFiscais selo = service.solicitarSelo(data.getEmpresaId(), data.getProduto(), user);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(selo);
