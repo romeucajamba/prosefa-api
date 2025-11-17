@@ -1,11 +1,7 @@
 package com.profesa.selos.domain.entities;
 
-import com.profesa.selos.domain.enums.EstadoSelo;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -15,13 +11,18 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
+@Data
+@Table(name = "selos_fiscais", uniqueConstraints = @UniqueConstraint(columnNames = "codigo"))
 public class SelosFiscais {
     @Id@GeneratedValue
     private UUID id;
+
     @Column(unique = true, nullable = false)
     private String codigo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
 
     private String produto;
@@ -30,4 +31,12 @@ public class SelosFiscais {
 
     @Enumerated(EnumType.STRING)
     private EstadoSelo estado;
+
+    public enum EstadoSelo {
+        PENDENTE,
+        EMITIDO,
+        VALIDADO,
+        INVALIDADO
+    }
+
 }

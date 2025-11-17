@@ -1,12 +1,6 @@
 package com.profesa.selos.domain.entities;
-
-import com.profesa.selos.domain.enums.StatusEmpresa;
-import com.profesa.selos.domain.enums.TipoEmpresa;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,6 +10,9 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Builder
+@Data
+@Table(name = "empresa", uniqueConstraints = @UniqueConstraint(columnNames = "nif"))
 public class Empresa {
     @Id
     @GeneratedValue
@@ -33,4 +30,16 @@ public class Empresa {
     private StatusEmpresa status;
 
     private LocalDateTime dataRegistro;
+
+    public enum TipoEmpresa {
+        FABRICANTE,
+        IMPORTADOR
+    }
+
+    public enum StatusEmpresa {
+        ATIVA,
+        SUSPENSA,
+        BLOQUEADA
+    }
+
 }
