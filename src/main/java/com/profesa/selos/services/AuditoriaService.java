@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class AuditoriaService {
-    private LogAuditoriaRepository auditoriaRepo;
+    private final LogAuditoriaRepository auditoriaRepo;
 
     public void log(
             String entidade,

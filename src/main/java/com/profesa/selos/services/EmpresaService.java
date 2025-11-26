@@ -18,10 +18,10 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EmpresaService {
 
-    private EmpresaRepository empresaRepository;
+    private final EmpresaRepository empresaRepository;
 
     @Transactional
-    public EmpresaRepository criar(EmpresaCreateDto dto) {
+    public EmpresaResponse criar(EmpresaCreateDto dto) {
 
         if (empresaRepository.findByNif(dto.nif()).isPresent()) {
             throw new BusinessException("Já existe empresa com esse NIF.");
@@ -36,7 +36,6 @@ public class EmpresaService {
                 .build();
 
         empresaRepository.save(empresa);
-
         return toResponse(empresa);
     }
 

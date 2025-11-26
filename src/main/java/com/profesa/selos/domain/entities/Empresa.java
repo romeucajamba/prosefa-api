@@ -32,9 +32,6 @@ public class Empresa {
 
     private LocalDateTime dataRegistro;
 
-    public static Snippet builder() {
-        return null;
-    }
 
     public UUID getId() {
         return null;
