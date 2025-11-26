@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS selo_seq (
+    id SERIAL PRIMARY KEY,
+    value BIGINT NOT NULL
+);
+
+INSERT INTO selo_seq (value)
+VALUES (0)
+ON CONFLICT DO NOTHING;
