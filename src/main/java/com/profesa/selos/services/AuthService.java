@@ -44,6 +44,9 @@ public class AuthService {
         if (usuarioRepository.findByEmail(dto.email()).isPresent())
             throw new RuntimeException("Email já registrado");
 
+        if (!dto.senha().equals(dto.confirmarSenha()))
+            throw new RuntimeException("As senhas não coincidem");
+
         Usuarios u = Usuarios.builder()
                 .email(dto.email())
                 .senha(encoder.encode(dto.senha()))
