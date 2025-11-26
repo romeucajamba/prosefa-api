@@ -12,7 +12,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@Data
 @Table(name = "selos_fiscais", uniqueConstraints = @UniqueConstraint(columnNames = "codigo"))
 public class SelosFiscais {
     @Id@GeneratedValue
