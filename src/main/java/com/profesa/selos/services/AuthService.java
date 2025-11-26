@@ -3,19 +3,22 @@ package com.profesa.selos.services;
 import com.profesa.selos.dto.LoginRequest;
 import com.profesa.selos.dto.LoginResponse;
 import com.profesa.selos.dto.RegisterRequest;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import com.profesa.selos.domain.repositories.UserRepository;
-import com.profesa.selos.config.JwtTokenProvider;
 import com.profesa.selos.domain.entities.Usuarios;
+import com.profesa.selos.config.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
 
-    private UserRepository usuarioRepository;
-    private PasswordEncoder encoder;
-    private JwtTokenProvider tokenProvider;
+    private final UserRepository usuarioRepository;
+    private final PasswordEncoder encoder;
+    private final JwtTokenProvider tokenProvider;
 
     public LoginResponse login(LoginRequest dto) {
 
@@ -25,10 +28,10 @@ public class AuthService {
         if (!encoder.matches(dto.senha(), u.getSenha()))
             throw new RuntimeException("Credenciais inválidas");
 
-        UserDetails user = org.springframework.security.core.userdetails.User
+        UserDetails user = User
                 .withUsername(u.getEmail())
                 .password(u.getSenha())
-                .roles(u.getPapel().name())
+                .roles(u.getPapel() == null ? "USER" : u.getPapel().name())
                 .build();
 
         String token = tokenProvider.generateToken(user);
@@ -41,10 +44,10 @@ public class AuthService {
         if (usuarioRepository.findByEmail(dto.email()).isPresent())
             throw new RuntimeException("Email já registrado");
 
-        Usuarios u = Usuario.builder()
+        Usuarios u = Usuarios.builder()
                 .email(dto.email())
                 .senha(encoder.encode(dto.senha()))
-                .papel(Usuario.Papel.USER)
+                .papel(Usuarios.Papel.USER)
                 .build();
 
         usuarioRepository.save(u);
