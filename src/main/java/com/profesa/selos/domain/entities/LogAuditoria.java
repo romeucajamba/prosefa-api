@@ -22,12 +22,9 @@ public class LogAuditoria {
     private String entidade;
     private String acao;
     private String usuario;
-    private LocalDateTime datHora;
+    private LocalDateTime dataHora;
 
     @Column(columnDefinition = "TEXT")
     private String detalhes;
 
-    public static Object builder() {
-        return null;
-    }
 }
