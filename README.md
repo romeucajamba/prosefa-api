@@ -55,7 +55,7 @@ curl -X POST http://localhost:8080/api/selos/solicitar -H "Content-Type: applica
 Validar selo:
 curl -X POST http://localhost:8080/api/selos/validar/PROSEFA-2025-000001 -H "X-User: auditor"
 
-ENVS:
+##ENVS:
 #######################################
 # AMBIENTE DA APLICAÇÃO
 #######################################
