@@ -33,7 +33,7 @@ public class Empresa {
 
 
     public UUID getId() {
-        return null;
+        return this.id;
     }
 
     public enum TipoEmpresa {

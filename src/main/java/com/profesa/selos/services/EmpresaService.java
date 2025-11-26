@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -35,14 +36,21 @@ public class EmpresaService {
                 .dataRegistro(LocalDateTime.now())
                 .build();
 
-        empresaRepository.save(empresa);
-        return toResponse(empresa);
+        Empresa saved = empresaRepository.save(empresa);
+        return toResponse(saved);
     }
 
     public EmpresaResponse buscar(UUID id) {
         Empresa empresa = empresaRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Empresa não encontrada"));
         return toResponse(empresa);
+    }
+
+    public List<EmpresaResponse> listarTodas() {
+        return empresaRepository.findAll()
+                .stream()
+                .map(this::toResponse)
+                .toList();
     }
 
     @Transactional
