@@ -12,5 +12,10 @@ public interface SelosFiscaisRepository extends JpaRepository<SelosFiscais, UUID
     Optional<SelosFiscais> findByCodigo(String codigo);
     Long countByEmpresaAndEstado(Empresa empresa, SelosFiscais.EstadoSelo estado);
     List<SelosFiscais> findByEmpresaAndEstadoAndDataEmissaoBefore(Empresa empresa,SelosFiscais.EstadoSelo estado, LocalDateTime dateTime);
+    long countByEmpresaAndEstadoAndDataEmissaoBefore(
+            Empresa empresa,
+            SelosFiscais.EstadoSelo estado,
+            LocalDateTime data
+    );
 
 }

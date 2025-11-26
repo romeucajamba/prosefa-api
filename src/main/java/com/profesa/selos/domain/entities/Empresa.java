@@ -12,7 +12,6 @@ import java.util.UUID;
 @Setter
 @Entity
 @Builder
-@Data
 @Table(name = "empresa", uniqueConstraints = @UniqueConstraint(columnNames = "nif"))
 public class Empresa {
     @Id

@@ -10,7 +10,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Data
 @Builder
 @Setter
 @Table(name = "log_auditoria")
