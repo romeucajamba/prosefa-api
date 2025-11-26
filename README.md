@@ -54,3 +54,71 @@ curl -X POST http://localhost:8080/api/selos/solicitar -H "Content-Type: applica
 
 Validar selo:
 curl -X POST http://localhost:8080/api/selos/validar/PROSEFA-2025-000001 -H "X-User: auditor"
+
+ENVS:
+#######################################
+# AMBIENTE DA APLICAÇÃO
+#######################################
+SPRING_PROFILES_ACTIVE=
+SERVER_PORT=
+
+#######################################
+# BANCO DE DADOS (POSTGRES EXEMPLO)
+#######################################
+DB_HOST=
+DB_PORT=
+SPRING_APP_NAME=
+SERVER_PORT=
+DB_NAME=
+DB_USERNAME=
+DB_PASSWORD=
+
+JWT_SECRET=
+JWT_EXPIRATION=
+
+
+SPRING_DATASOURCE_URL=
+SPRING_DATASOURCE_USERNAME=
+SPRING_DATASOURCE_PASSWORD=
+SPRING_JPA_HIBERNATE_DDL_AUTO=
+SPRING_JPA_SHOW_SQL=
+
+#######################################
+# JWT (SEGURANÇA)
+#######################################
+JWT_SECRET=
+JWT_EXPIRATION=
+
+#######################################
+# USUÁRIO ADMIN PADRÃO
+#######################################
+ADMIN_DEFAULT_EMAIL=
+ADMIN_DEFAULT_PASSWORD=
+
+#######################################
+# SWAGGER CONFIG
+#######################################
+SWAGGER_API_TITLE=
+SWAGGER_API_DESCRIPTION=
+SWAGGER_API_VERSION=
+
+#######################################
+# LOGGING / DEBUG
+#######################################
+LOGGING_LEVEL_ROOT=
+LOGGING_LEVEL_COM_PROFESA=
+
+#######################################
+# SPRING DOC (SWAGGER 3)
+#######################################
+SPRINGDOC_API_DOCS_ENABLED=
+SPRINGDOC_SWAGGER_UI_ENABLED=
+SPRINGDOC_SWAGGER_UI_PATH=
+SPRINGDOC_API_DOCS_PATH=
+
+#######################################
+# CORS
+#######################################
+CORS_ALLOWED_ORIGINS=
+CORS_ALLOWED_METHODS=
+CORS_ALLOWED_HEADERS=
