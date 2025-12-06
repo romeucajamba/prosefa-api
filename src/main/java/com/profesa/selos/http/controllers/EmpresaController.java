@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.profesa.selos.dto.EmpresaCreateDto;
 import com.profesa.selos.dto.EmpresaResponse;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -28,6 +29,11 @@ public class EmpresaController {
     @GetMapping("/{id}")
     public ResponseEntity<EmpresaResponse> buscarEmpresaPorId(@PathVariable UUID id) {
         return ResponseEntity.ok(service.buscar(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmpresaResponse>> listarTodasEmpresas() {
+        return ResponseEntity.ok(service.listarTodas());
     }
 
     @PatchMapping("/{id}/status")
